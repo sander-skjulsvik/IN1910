@@ -19,8 +19,19 @@ class Quadratic(object):
     
     def roots(self):
         a, b, c = self.a2, self.a1, self.a0
-
-
+        #two results
+        if b**2 - 4*a*c > 0:
+            x1 = (-b + np.sqrt(b**2 - 4*a*c))/2*a
+            x0 = (-b - np.sqrt(b**2 - 4*a*c))/2*a
+            x = (x0,x1)
+        #two complex results
+        elif b**2 - 4*a*c < 0:
+            #Ignore imaginary ones
+            x = ()
+        #one result
+        else:
+            x0 = (-b + np.sqrt(b**2 - 4*a*c))/(2*a)
+            x = (x0,x0)
         return x
 
 
@@ -38,6 +49,15 @@ def test_Quadratic_add():
     assert a2 == 0
     assert a1 == 4
     assert a0 == -2
+
+def test_Quadratic_root():
+    f1 = Quadratic(2, -2, 2)
+    f2 = Quadratic(1, -2, 1)
+    f3 = Quadratic(1, -3, 2)
+    
+    assert f1.roots() == ()
+    assert abs(f2.roots()[0] - 1) < 1e-8
+    assert abs(f3.roots()[0] - 1) < 1e-8 and abs(f3.roots()[1] - 2) < 1e-8
     
 
 if __name__ == "__main__":
@@ -66,3 +86,6 @@ if __name__ == "__main__":
     # plt.show()
 
     # test_Quadratic_add()
+
+    #Root
+    test_Quadratic_root()
