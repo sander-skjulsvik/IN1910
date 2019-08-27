@@ -44,11 +44,10 @@ class Quadratic(object):
     def intersect(self, other):
         h = self - other
         roots = h.roots()
-        return roots
-        # intersection_points = []
-        # for root in roots:
-        #     intersection_points.append( (root,self(root)) )
-        # return intersection_points
+        intersection_points = []
+        for root in roots:
+            intersection_points.append( (root,self(root)) )
+        return intersection_points
 
 
 
@@ -109,30 +108,12 @@ if __name__ == "__main__":
     # test_Quadratic_root()
 
     # Intersection
-
     f = Quadratic(1, -2, 1)
     g = Quadratic(2, 3, -2)
-    f_g_intersect = f.intersect(g)
-    print(f_g_intersect)
+    f_g_intersect_points = f.intersect(g)
 
-    x = np.linspace(-6, 5, 1000)
-
+    x = np.linspace(-6,6,1000)
     plt.plot(x,f(x), x,g(x))
-    for x in f_g_intersect:
-        plt.plot(x, f(x), "*")
+    for point in f_g_intersect_points:
+        plt.plot(point[0], point[1], "*")
     plt.show()
-
-
-
-
-    # f = Quadratic(1, -2, 1)
-    # g = Quadratic(2, 3, -2)
-    # f_g_intersect_points = f.intersect(g)
-    # print(f_g_intersect_points)
-
-    # x = np.linspace(-6, 5, 1000)
-
-    # plt.plot(x,f(x), x,g(x))
-    # for point in f_g_intersect_points:
-    #     plt.plot(point, "*")
-    # plt.show()
