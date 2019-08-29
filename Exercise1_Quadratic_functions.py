@@ -50,8 +50,6 @@ class Quadratic(object):
         return intersection_points
 
 
-
-
 def test_Quadratic():
         f = Quadratic(1, -2, 1)
         assert abs(f(-1) - 4) < 1e-8

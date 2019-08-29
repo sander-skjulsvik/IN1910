@@ -14,11 +14,13 @@ class Polynomial(object):
         return SUM
 
     def __str__(self):
-        STR = ''
+        STR = f''
+        print(f'Polynomial.__str__: self.coeffs={self.coeffs}')
         for exponent in self.coeffs:
             coeff = self.coeffs[exponent]
             STR += f'{coeff}*x**{exponent} + '
-        return STR[:-3]
+        print(f'Polynomial.__str__: STR={STR}')
+        return STR
 
     def __add__(self, other):
         coeffs = self.coeffs + other.coeffs
@@ -28,7 +30,9 @@ class Polynomial(object):
         coeffs = {}
         for exponent in self.coeffs:
             coeffs[exponent-1] = self.coeffs[exponent] * exponent
-        return Polynomial(coeffs)
+        f = Polynomial(coeffs)
+        print(f'Polynomial.derivative of {self} to {f}')
+        return f
 
 class AddableDict(dict):
     def __init__(self, DICT):
@@ -49,7 +53,7 @@ class AddableDict(dict):
             #if key is only in other.DICT, add
             if key not in self.DICT:
                 new_DICT[key] = other.DICT[key]
-        return  AddableDict(new_DICT)
+        return AddableDict(new_DICT)
 
     def __str__(self):
         return str(self.DICT)
@@ -85,10 +89,11 @@ if __name__ == "__main__":
     # plt.show()
 
     # Exercise 2b): Adding general polynomials together
-    # f = Polynomial({0:1, 5:-7, 10:1})
-    # g = Polynomial({5:7, 10:1, 15:-3})
+    print('hello world')
+    f = Polynomial({0:1, 5:-7, 10:1})
+    g = Polynomial({5:7, 10:1, 15:-3})
 
-    # print(f+g)
+    print(f'f+g = {str(f+g)}')
 
     # # Exercise 2c) Defining a AddableDictionary class
     # a = AddableDict({0: 2, 1: 3, 2: 4})
@@ -98,6 +103,6 @@ if __name__ == "__main__":
     # test_AddableDict()
 
     # Exercise 2d) Derivative of a polynomial
-    test_derivative()   
+    # test_derivative()   
 
 
