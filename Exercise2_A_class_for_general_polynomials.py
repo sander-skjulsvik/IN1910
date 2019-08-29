@@ -1,61 +1,73 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-class Polynomial(object):
-    def __init__(self, coeffs):
-        coeffs  = AddableDict(coeffs)
-        self.coeffs = coeffs
+
+
+class AddableDict(dict):
+    # def __init__(self, DICT):
+    #     super().__init__(DICT)
+    
+    def __add__(self, other):
+        _new = {}
+        #running through self.DICT
+        for key in self:
+            #if key is in both DICT add
+            if key in other:
+                _new[key] =  self[key] + other[key]
+            #if key is only in self.DICT, add
+            else:
+                _new[key] = self[key]
+        #running through other.DICT to catch the rest if the exponents
+        for key in other:
+            #if key is only in other.DICT, add
+            if key not in self:
+                _new[key] = other[key]
+        new = AddableDict(_new)
+        print(f'AddableDict.__add__: self={self}, other={other}, new={new}')
+        return  new
+
+
+class Polynomial(AddableDict):
+    # def __init__(self, coeffs):
+    #     coeffs  = AddableDict(coeffs)
+    #     self = coeffs
+    def __init__(self, DICT):
+        super().__init__(DICT)
+        self.coeffs = DICT
 
     def __call__(self, x):
         SUM = 0
-        for exponent in self.coeffs:
-            coeff = self.coeffs[exponent]
+        for exponent in self:
+            coeff = self[exponent]
             SUM += coeff*x**exponent
         return SUM
 
     def __str__(self):
         STR = ''
-        for exponent in self.coeffs:
-            coeff = self.coeffs[exponent]
+        for exponent in self:
+            coeff = self[exponent]
             STR += f'{coeff}*x**{exponent} + '
         return STR[:-3]
 
-    def __add__(self, other):
-        coeffs = self.coeffs + other.coeffs
-        return Polynomial(coeffs)
+    # def __add__(self, other):
+    #     coeffs = self + other
+    #     print(f'Polynomial.__add__: self={self}, other={other}, coeffs={coeffs}')
+    #     return Polynomial(coeffs)
 
     def derivative(self):
         coeffs = {}
-        for exponent in self.coeffs:
-            coeffs[exponent-1] = self.coeffs[exponent] * exponent
+        if 0 in self:
+            del self[0]
+        for exponent in self:
+            coeffs[exponent-1] = self[exponent] * exponent
         return Polynomial(coeffs)
 
-class AddableDict(dict):
-    def __init__(self, DICT):
-        self.DICT = DICT
-    
-    def __add__(self, other):
-        new_DICT = {}
-        #running through self.DICT
-        for key in self.DICT:
-            #if key is in both DICT add
-            if key in other.DICT:
-                new_DICT[key] =  self.DICT[key] + other.DICT[key]
-            #if key is only in self.DICT, add
-            else:
-                new_DICT[key] = self.DICT[key]
-        #running through other.DICT to catch the rest if the exponents
-        for key in other.DICT:
-            #if key is only in other.DICT, add
-            if key not in self.DICT:
-                new_DICT[key] = other.DICT[key]
-        return  AddableDict(new_DICT)
 
-    def __str__(self):
-        return str(self.DICT)
+    # def __str__(self):
+    #     return str(self)
 
-    def __getitem__(self, key):
-        return self.DICT[key]
+    # def __getitem__(self, key):
+    #     return self[key]
 
 
 def test_AddableDict():
@@ -70,7 +82,7 @@ def test_AddableDict():
 def test_derivative():
     f = Polynomial({10:1, 6:-3, 2:2, 0:1})
     f_deriv = f.derivative()
-    print(f'\n\nf = {f}, type f: {type(f)}, f_deriv = {f_deriv}, type f_deriv: {type(f_deriv)}\n\n')
+    # print(f'\n\nf = {f}, type f: {type(f)}, f_deriv = {f_deriv}, type f_deriv: {type(f_deriv)}\n\n')
     assert f_deriv.coeffs == {9:10, 5:-18, 1:4}
 
 if __name__ == "__main__":
