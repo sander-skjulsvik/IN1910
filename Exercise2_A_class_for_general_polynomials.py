@@ -23,7 +23,7 @@ class AddableDict(dict):
             if key not in self:
                 _new[key] = other[key]
         new = AddableDict(_new)
-        print(f'AddableDict.__add__: self={self}, other={other}, new={new}')
+        #print(f'AddableDict.__add__: self={self}, other={other}, new={new}')
         return  new
 
 
@@ -47,7 +47,7 @@ class Polynomial(AddableDict):
         for exponent in self:
             coeff = self[exponent]
             STR += f'{coeff}*x**{exponent} + '
-        print(f'Polynomial.__str__: STR={STR}')
+        #print(f'Polynomial.__str__: STR={STR}')
         return STR
 
     def derivative(self):
@@ -93,11 +93,11 @@ if __name__ == "__main__":
     # plt.show()
 
     # Exercise 2b): Adding general polynomials together
-    print('hello world')
-    f = Polynomial({0:1, 5:-7, 10:1})
-    g = Polynomial({5:7, 10:1, 15:-3})
+    # print('hello world')
+    # f = Polynomial({0:1, 5:-7, 10:1})
+    # g = Polynomial({5:7, 10:1, 15:-3})
 
-    print(f'f+g = {str(f+g)}')
+    # print(f'f+g = {str(f+g)}')
 
     # # Exercise 2c) Defining a AddableDictionary class
     # a = AddableDict({0: 2, 1: 3, 2: 4})
@@ -107,6 +107,6 @@ if __name__ == "__main__":
     # test_AddableDict()
 
     # Exercise 2d) Derivative of a polynomial
-    # test_derivative()   
+    test_derivative()   
 
 
