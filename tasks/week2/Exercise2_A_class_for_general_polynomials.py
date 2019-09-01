@@ -49,6 +49,11 @@ class Polynomial(AddableDict):
             STR += f'{coeff}*x**{exponent} + '
         #print(f'Polynomial.__str__: STR={STR}')
         return STR
+    
+    def __mul__(self, other)
+        for self_val in self:
+            for other_val in other:
+                pass
 
     def derivative(self):
         coeffs = {}
@@ -57,6 +62,8 @@ class Polynomial(AddableDict):
         for exponent in self:
             coeffs[exponent-1] = self[exponent] * exponent
         return Polynomial(coeffs)
+
+
 
 
     # def __str__(self):
