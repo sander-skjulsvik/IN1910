@@ -48,12 +48,15 @@ class Polynomial(AddableDict):
             coeff = self[exponent]
             STR += f'{coeff}*x**{exponent} + '
         #print(f'Polynomial.__str__: STR={STR}')
-        return STR
+        return STR[:-3]
     
-    def __mul__(self, other)
-        for self_val in self:
-            for other_val in other:
-                pass
+    def __mul__(self, other):
+        _new = {}
+        for i in self:
+            for j in other:
+                _new[i+j] = self[i]*other[j]
+        return Polynomial(_new)
+                
 
     def derivative(self):
         coeffs = {}
@@ -62,15 +65,6 @@ class Polynomial(AddableDict):
         for exponent in self:
             coeffs[exponent-1] = self[exponent] * exponent
         return Polynomial(coeffs)
-
-
-
-
-    # def __str__(self):
-    #     return str(self)
-
-    # def __getitem__(self, key):
-    #     return self[key]
 
 
 def test_AddableDict():
@@ -87,6 +81,12 @@ def test_derivative():
     f_deriv = f.derivative()
     # print(f'\n\nf = {f}, type f: {type(f)}, f_deriv = {f_deriv}, type f_deriv: {type(f_deriv)}\n\n')
     assert f_deriv.coeffs == {9:10, 5:-18, 1:4}
+
+def test_Polynomial_mul():
+    f = Polynomial({2: 4, 1: 1})
+    g = Polynomial({3: 3, 0: 1})
+    h = f*g
+    assert h.coeffs == {5:12, 4:3, 2:4, 1:1}
 
 if __name__ == "__main__":
     # Exercise 2a) Defining the Polynomial class
@@ -114,6 +114,13 @@ if __name__ == "__main__":
     # test_AddableDict()
 
     # Exercise 2d) Derivative of a polynomial
-    test_derivative()   
+    # test_derivative()  
 
+    # Exercise 2e) Multiplying polynomials
+    #try
+    f = Polynomial({2: 4, 1: 1})
+    g = Polynomial({3: 3, 0: 1})
+    print(f*g)
+    #test
+    test_Polynomial_mul()
 
