@@ -12,7 +12,7 @@ def median(data):
         sorted list
     '''
     if len(data) == 0:
-        raise ValueError('data list cant be empty')
+        raise IndexError('data list cant be empty')
     _data = list(data)
     _data.sort()
     n = len(_data)
@@ -27,7 +27,7 @@ def median(data):
 #     data.sort()
 #     return data[len(data)//2]
 
-def test_median():
+def test_median_general():
     # #situation: one element list
     data = [8]
     expected_val = 8
@@ -35,7 +35,7 @@ def test_median():
     msg = f'expected_val = {expected_val}, calculated_value = {calculated_value}, data = {data}'
     assert expected_val == calculated_value, msg
 
-
+def test_median_two_element_list():
     # #situation: two element list
     data = [8, 6]
     expected_val = (8+6)/2
@@ -43,6 +43,7 @@ def test_median():
     msg = f'expected_val = {expected_val}, calculated_value = {calculated_value}, data = {data}'
     assert expected_val == calculated_value, msg
 
+def test_median_unchanged_original_data():
     #situation: unchanged original data
     data = [2,3,1]
     expected_val = [2,3,1]
@@ -52,10 +53,14 @@ def test_median():
     assert expected_val == data, msg
 
     #situation: raising an error if the input is empty list/tuple
+def test_median_empty_list_error():
+    
 
 
 if __name__ == "__main__":
     # print(median([11, 3, 1, 5, 3]))
-    test_median()
+    test_median_general()
+    test_median_two_element_list()
+    test_median_unchanged_original_data()
     
     
