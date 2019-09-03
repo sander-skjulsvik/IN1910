@@ -54,7 +54,16 @@ def test_median_unchanged_original_data():
 
     #situation: raising an error if the input is empty list/tuple
 def test_median_empty_list_error():
-    pass
+    data = []
+    try:
+        x = median(data)
+    except IndexError:
+        #failed as expected
+        pass
+    else:
+        assert False, 'Wrong fail'
+    
+
     
 
 
@@ -63,5 +72,4 @@ if __name__ == "__main__":
     test_median_general()
     test_median_two_element_list()
     test_median_unchanged_original_data()
-    
-    
+    test_median_empty_list_error()

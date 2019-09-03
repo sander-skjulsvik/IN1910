@@ -4,9 +4,10 @@ def bubble_sort(list_to_order):
 
     '''
     n = len(list_to_order)
+    # new = list_to_order
     for j in range(n-1):
         for i in range(0,n-1):
-            # print(f'list_to_order = {list_to_order}, i = {i}, j = {j}')
+            print(f'list_to_order = {list_to_order}, i = {i}, j = {j}')
             greater = list_to_order[i]
             smaller = list_to_order[i+1]
             if list_to_order[i] > list_to_order[i+1]:            
@@ -42,8 +43,8 @@ def test_bubble_sort():
 if __name__ == "__main__":
     test_bubble_sort()
 
-    # test_list = [6,5,4,3,2,1]
-    # print(bubble_sort(test_list))
+    test_list = [6,5,4,3,2,1]
+    print(bubble_sort(test_list))
 
     
 
