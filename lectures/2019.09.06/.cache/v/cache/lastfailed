@@ -1,0 +1,4 @@
+{
+  "test_vector.py::test_repr": true,
+  "test_vector.py::test_str": true
+}
