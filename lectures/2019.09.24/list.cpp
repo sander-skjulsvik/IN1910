@@ -31,12 +31,13 @@ vector<int> get_primes(int N){
 }
 
 int main() {   
-    int n = 10000;
+    int n = 1000;
     vector<int> primes = get_primes(n);
 
-    for (int i = 0; i < primes.size(); i++){
-        cout << primes[i] << " ";
-    }
+    // for (int i = 0; i < primes.size(); i++){
+    //     cout << primes[i] << " ";
+    // }
+    cout << primes.size() << endl;
     return 0;
 
 }

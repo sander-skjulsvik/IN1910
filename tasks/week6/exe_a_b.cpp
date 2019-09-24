@@ -17,7 +17,7 @@ bool is_prime(int n){
     return true;
 }
 
-double test_get_prime_time(int N = 1000,int n=1000*3){
+double test_get_prime_time(int N = 1000*3,int n=1000*2){
     double time = 0;
 
     for (int i=0; i<N; i++){
