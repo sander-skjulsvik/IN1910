@@ -1,0 +1,28 @@
+big O notation
+
+Hvordan skal man velge algoritme?
+    si man har to algoritmer som gjør det samme (med samme res)?
+    hvordan skal man velge?
+    Man velger den som kjører raskest
+    Noen algorimer kan være raskere i forskjellige situasjoner.
+    Det å se på hvor rakse de er er ikke nødvendigvis bra nokk.
+Vi ønsker å måle hvor mange opperasjoner som utføres.
+    Sette verdien til en variabel
+    ...
+
+def find_biggest(numbers):
+    #2 operasjoner:
+    #Henter veriden numbers[0]
+    #setter veriden til biggest
+    biggest = numbers[0]
+
+    #i settes (n-1) ganger
+    for i in range(1, len(numbers)):
+        #2 * (i-1) operasjoner
+        #Hente veriden til number[i]
+        #Sammenligne to tall
+        if numbers[i] > biggest:
+            # 2 OPERASJONER (samme som første linje)
+            biggest = numbers[i]
+    # En return
+    return biggest
