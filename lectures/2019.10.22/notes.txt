@@ -1,0 +1,5 @@
+#Binære trær
+    minner om lenkede lister, men hver node inneholder en peker til to andre noder - left og right
+    ...
+
+    Noden til venstre må være mindre enn den til venstre
