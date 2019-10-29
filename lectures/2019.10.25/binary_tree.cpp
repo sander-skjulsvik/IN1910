@@ -24,7 +24,7 @@ class BinarySearchTree {
         if (subroot == nullptr) {
             return new Node(x);
         }
-
+ 
         // Subtree isn't empty, have to go deeper (recursively)
         if (x <= subroot->key) {
             subroot->left = insert(subroot->left, x);
