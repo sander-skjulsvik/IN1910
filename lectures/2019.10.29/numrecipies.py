@@ -20,5 +20,9 @@ if __name__ == "__main__":
     # 0 to 1
     for _ in range(time.time_ns()):
         print(random() /2**32)
-        # Y = (b-a) * X + a
-        print(Y)
+
+    # a to b
+    a,b = 2, 10
+    for _ in range(10):
+        X = random() /2**32
+        Y = (b-a)*X + a

@@ -48,3 +48,23 @@
     Z_2 = \sqrt{-2 \ln U_1}\sin (2\pi U_2).
     \end{align}$$
 
+# Periodisitet - må man passe på med "Congrugential"
+    hvis X0 = xi så vil rekken starte på nytt.
+    max periode er m, men kan være mindre.
+    Da avhengig ac a, c.
+
+# vanligvis .py
+    bruker vi libs for tilfeldige tall.
+    som np.random, eller random.
+    for seed: np.random.seed(x)
+
+# cpp
+    innebygd rand(), bruker vanligvis LCG
+    srand for å sette seed, ikke anbefalt
+
+    engine: is generating numbers.
+    then we can use f.eks
+    uniform_real_distribution: make the rn to my form
+    
+
+    
