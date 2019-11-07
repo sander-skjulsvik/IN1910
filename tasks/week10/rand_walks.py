@@ -22,7 +22,11 @@ def plot(X, s = None):
     y = X
     x = range(len(y))
     fig, ax = plt.subplots()
-    ax.step(x,y, where="mid", alpha=0.02, color="g")
+    if  M <= 10:
+        alfa = 1
+    else:
+        alfa= 10/M
+    ax.step(x,y, where="mid", alpha=alfa, color="g")
     ax.set_xlabel(" Nr of steps taken")
     ax.set_ylabel(" Displacement ")
     plt.show()
