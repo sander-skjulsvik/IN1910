@@ -9,4 +9,10 @@
 
 ### a: Performing random walks
     Use np.random.randint and np.cumsum to perform 1000 random walks of 500 steps each.
+
+    walker_1D:
+        one walker, walkes N step, starts at X0
+
+    walkers_1D_vectorized: 
+        M walkers, walk N steps, Starts at X0, if plot_path plots the walker
             
